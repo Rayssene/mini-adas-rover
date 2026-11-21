@@ -1,0 +1,37 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  logic-tests:
+    name: Logic unit tests (PC)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build tests
+        run: g++ -std=c++11 -Wall -Wextra -Werror -I rover tests/test_logic.cpp -o test_logic
+      - name: Run tests
+        run: ./test_logic
+
+  sil-test:
+    name: Software-in-the-loop test of the sketch (PC)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build SIL test
+        run: g++ -std=gnu++11 -Wall -Wextra -Werror -I tests/sil -I rover tests/sil/sil_test.cpp -o sil_test
+      - name: Run SIL test
+        run: ./sil_test
+
+  compile-sketch:
+    name: Compile sketch for Arduino Uno
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/compile-sketches@v1
+        with:
+          fqbn: arduino:avr:uno
+          sketch-paths: |
+            - rover
+          libraries: |
+            - name: Servo

@@ -1,0 +1,222 @@
+{
+  "version": 1,
+  "author": "Rayssene",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 200,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "sonar",
+      "top": -60,
+      "left": 40,
+      "attrs": {
+        "distance": "150"
+      }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "head",
+      "top": -60,
+      "left": 300,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 40,
+      "left": 480,
+      "attrs": {
+        "volume": "0.1"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_status",
+      "top": 60,
+      "left": 580,
+      "attrs": {
+        "color": "red",
+        "label": "status"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_status",
+      "top": 150,
+      "left": 560,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_l_speed",
+      "top": 480,
+      "left": 40,
+      "attrs": {
+        "color": "green",
+        "label": "L speed"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_l_dir",
+      "top": 480,
+      "left": 110,
+      "attrs": {
+        "color": "orange",
+        "label": "L reverse"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_r_speed",
+      "top": 480,
+      "left": 200,
+      "attrs": {
+        "color": "green",
+        "label": "R speed"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_r_dir",
+      "top": 480,
+      "left": 270,
+      "attrs": {
+        "color": "orange",
+        "label": "R reverse"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "sonar:VCC",
+      "uno:5V",
+      "red",
+      []
+    ],
+    [
+      "sonar:GND",
+      "uno:GND.1",
+      "black",
+      []
+    ],
+    [
+      "sonar:TRIG",
+      "uno:4",
+      "blue",
+      []
+    ],
+    [
+      "sonar:ECHO",
+      "uno:3",
+      "green",
+      []
+    ],
+    [
+      "head:V+",
+      "uno:5V",
+      "red",
+      []
+    ],
+    [
+      "head:GND",
+      "uno:GND.1",
+      "black",
+      []
+    ],
+    [
+      "head:PWM",
+      "uno:A5",
+      "orange",
+      []
+    ],
+    [
+      "buzzer:2",
+      "uno:A0",
+      "purple",
+      []
+    ],
+    [
+      "buzzer:1",
+      "uno:GND.2",
+      "black",
+      []
+    ],
+    [
+      "led_status:A",
+      "uno:13",
+      "red",
+      []
+    ],
+    [
+      "led_status:C",
+      "r_status:1",
+      "black",
+      []
+    ],
+    [
+      "r_status:2",
+      "uno:GND.2",
+      "black",
+      []
+    ],
+    [
+      "led_l_speed:A",
+      "uno:11",
+      "green",
+      []
+    ],
+    [
+      "led_l_dir:A",
+      "uno:12",
+      "orange",
+      []
+    ],
+    [
+      "led_r_speed:A",
+      "uno:5",
+      "green",
+      []
+    ],
+    [
+      "led_r_dir:A",
+      "uno:6",
+      "orange",
+      []
+    ],
+    [
+      "led_l_speed:C",
+      "uno:GND.3",
+      "black",
+      []
+    ],
+    [
+      "led_l_dir:C",
+      "uno:GND.3",
+      "black",
+      []
+    ],
+    [
+      "led_r_speed:C",
+      "uno:GND.3",
+      "black",
+      []
+    ],
+    [
+      "led_r_dir:C",
+      "uno:GND.3",
+      "black",
+      []
+    ]
+  ],
+  "dependencies": {}
+}
