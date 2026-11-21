@@ -1,0 +1,10 @@
+test_logic
+test_logic.exe
+*.o
+build/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+sil_test
+sil_test.exe
